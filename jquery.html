@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Mouse Follower</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script> 
+$(document).mousemove(function(event){
+    $('#divx').css({
+       left:   event.pageX -7
+    });
+    $('#divy').css({
+       top:   event.pageY -7
+    });
+    
+    var shade = Math.floor((255 * event.pageY) / $( window ).height());
+    $("#div1").css("background-color", 'RGB(0, ' + shade + ', 0)'); 
+    $('#div1').css({ WebkitTransform: 'rotate(' + event.pageX + 'deg)'});
+    
+});
+$(document).click(function(event){
+    $("#div1").animate({left: event.pageX-7 + 'px', top: event.pageY -7 + 'px'});
+});
+</script> 
+</head>
+<body>
+
+<div id="other">
+  
+</div>
+<div id="log"></div>
+
+
+<div id = "div1" style="background:#0000;height:10px;width:10px;position:absolute; border-style : solid; border-width:2px"></div>
+<div id = "divx" style="background:#0000ff;height:10px;width:10px;position:absolute; border-style : solid; border-radius : 5px; border-width:2px"></div>
+<div id = "divy" style="background:#ff0000;height:10px;width:10px;position:absolute; border-style : solid; border-radius : 5px; border-width:2px"></div>
+</body>
+</html>
